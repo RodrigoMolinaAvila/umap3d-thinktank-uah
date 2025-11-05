@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAP 3D Explorer - Think Tanks Chilenos</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-hidden">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-40 px-6 flex items-center justify-between border-b border-[--ink-10]">
+        <h1 class="text-xl font-semibold text-[--ink-90]">BERTopic UMAP 3D por Think Tank (2019–2023)</h1>
+        <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-[--ink-10] shadow-sm">
+            <span class="text-sm text-[--ink-70]">N total: </span>
+            <span id="totalCount" class="text-sm font-bold text-[--ink-90]">17.418</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex h-screen pt-16">
+        <!-- 3D Canvas Container -->
+        <div class="flex-1 relative">
+            <div id="canvas-container" class="w-full h-full"></div>
+            <!-- Tooltip -->
+            <div id="tooltip" class="absolute hidden bg-[#1F2937EE] backdrop-blur-sm border border-white/20 rounded-lg p-3 pointer-events-none z-50 max-w-xs">
+                <div class="flex items-center gap-2 mb-2">
+                    <img id="tooltipLogo" src="" alt="" class="w-6 h-6 rounded">
+                    <span id="tooltipName" class="font-semibold text-sm text-white"></span>
+                </div>
+                <div class="text-xs text-gray-300/90 space-y-1">
+                    <div>ID: <span id="tooltipId" class="text-white"></span></div>
+                    <div>Coords: <span id="tooltipCoords" class="text-white"></span></div>
+                    <div>Total TT: <span id="tooltipTotal" class="text-white"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="w-80 bg-white/85 backdrop-blur-sm border-l border-[--ink-10] flex flex-col">
+            <div class="p-4 border-b border-[--ink-10] bg-white/95">
+                <h2 class="text-lg font-semibold text-center text-[--ink-90]">Think Tank</h2>
+            </div>
+            <div id="thinkTankList" class="flex-1 overflow-y-auto p-2 space-y-2">
+                <!-- Think tank items will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-40 px-6 flex items-center justify-between border-t border-[--ink-10]">
+        <div class="flex gap-3">
+            <button id="resetView" class="px-4 py-2 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded-lg text-sm text-[--ink-80] transition-colors flex items-center gap-2">
+                <i data-feather="refresh-cw" class="w-4 h-4"></i>
+                Reset vista
+            </button>
+            <button id="resetFilters" class="px-4 py-2 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded-lg text-sm text-[--ink-80] transition-colors flex items-center gap-2">
+                <i data-feather="x" class="w-4 h-4"></i>
+                Reset filtros
+            </button>
+        </div>
+        
+        <div class="text-sm text-[--ink-80] font-semibold">Demo para el departamento de Sociología · UAH</div>
+        
+        <div class="flex gap-3">
+            <!-- Tipo de think tank -->
+            <div class="flex gap-2">
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="De partido">De partido</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Semi Difuntos">Semi Difuntos</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Transversal">Transversal</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Universidades">Universidades</button>
+            </div>
+            <!-- Orientación política -->
+            <div class="flex gap-2 border-l border-[--ink-10] pl-3">
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Derecha">Derecha</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Izquierda">Izquierda</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>
