@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMAP 3D Explorer - Think Tanks Chilenos</title>
+    <title>UMAP 3D Explorer - Chilean Think Tanks</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -16,7 +16,7 @@
 <body class="overflow-hidden">
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-40 px-6 flex items-center justify-between border-b border-[--ink-10]">
-        <h1 class="text-xl font-semibold text-[--ink-90]">BERTopic UMAP 3D por Think Tank (2019–2023)</h1>
+        <h1 class="text-xl font-semibold text-[--ink-90]">BERTopic UMAP 3D by Think Tank (2019–2023)</h1>
         <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-[--ink-10] shadow-sm">
             <span class="text-sm text-[--ink-70]">N total: </span>
             <span id="totalCount" class="text-sm font-bold text-[--ink-90]">17.418</span>
@@ -71,15 +71,15 @@
         <div class="flex gap-3">
             <!-- Type de think tank -->
             <div class="flex gap-2">
-                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="De partido">De partido</button>
-                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Semi Difuntos">Semi Difuntos</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="De partido">Political Party</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Semi Difuntos">Near Gone</button>
                 <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Transversal">Transversal</button>
-                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Universidades">Universidades</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="tipo" data-value="Universidades">Universities</button>
             </div>
             <!-- Orientación política -->
             <div class="flex gap-2 border-l border-[--ink-10] pl-3">
-                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Derecha">Derecha</button>
-                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Izquierda">Izquierda</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Derecha">Right</button>
+                <button class="filter-btn px-3 py-1 bg-white hover:bg-[#FFF2EE] border border-[--ink-10] rounded text-xs text-[--ink-80] transition-colors" data-type="orientacion" data-value="Izquierda">Left</button>
             </div>
         </div>
     </footer>
